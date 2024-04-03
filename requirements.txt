@@ -2,3 +2,5 @@ flask
 numpy
 joblib
 flask_cors
+sklearn
+tensorflow
