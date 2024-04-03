@@ -1,15 +1,13 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import numpy as np
-import pickle
-
+from joblib import load
 
 app = Flask(__name__)
 CORS(app)
 
-# Load the model
-with open("models/model.pkl", "rb") as f:
-    model = pickle.load(f)
+# Load the model during Flask app initialization
+model = load("models/your_model.joblib")
 
 # Define the expected feature names
 EXPECTED_FEATURES = [
@@ -44,10 +42,10 @@ def predict():
                 )
 
         # Normalize the input features using the loaded scaler
-        input_data = np.array([[features[key] for key in EXPECTED_FEATURES]])         
+        input_data = np.array([[features[key] for key in EXPECTED_FEATURES]])
 
         # Make prediction
-        prediction = model.predict(input_data)        
+        prediction = model.predict(input_data)
 
         # Return the prediction
         return jsonify({"prediction": prediction[0]})

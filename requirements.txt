@@ -1,4 +1,4 @@
 flask
 numpy
-pickle
+joblib
 flask_cors
