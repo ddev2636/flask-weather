@@ -11,15 +11,15 @@ model = load("models/your_model.joblib")
 
 # Define the expected feature names
 EXPECTED_FEATURES = [
-    "jan",
-    "feb",
-    "march",
-    "april",
-    "may",
-    "june",
-    "july",
-    "aug",
-    "sept",
+    "maxtempC",
+    "mintempC",
+    "cloudcover",
+    "humidity",
+    "sunHour",
+    "HeatIndexC",
+    "precipMM",
+    "pressure",
+    "windspeedKmph",
 ]
 
 
@@ -53,6 +53,3 @@ def predict():
     except Exception as e:
         print(f"Error making prediction: {e}")
         return jsonify({"error": "Internal server error"}), 500
-
-
-
